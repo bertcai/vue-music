@@ -21,7 +21,11 @@
     "axios": "^0.18.0",
     "eventsource-polyfill": "^0.9.6",
     "webpack-hot-middleware": "^2.21.2",
-    "vue-lazyload": "^1.2.3"
+    "vue-lazyload": "^1.2.3",
+    "create-keyframe-animation": "^0.1.0",
+    "js-base64": "^2.4.3",
+    "lyric-parser": "^1.0.1",
+    "good-storage": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

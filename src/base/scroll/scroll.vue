@@ -25,6 +25,18 @@ export default {
     listenScroll: {
       type: Boolean,
       default: false
+    },
+    pullup: {
+      type: Boolean,
+      default: false
+    },
+    beforeScroll: {
+      type: Boolean,
+      default: false
+    },
+    refreshDelay: {
+      type: Number,
+      default: 20
     }
   },
   mounted () {
@@ -48,6 +60,20 @@ export default {
           me.$emit('scroll', pos)
         })
       }
+
+      if (this.pullup) {
+        this.scroll.on('scrollEnd', () => {
+          if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+            this.$emit('scrollToEnd')
+          }
+        })
+      }
+
+      if (this.beforeScroll) {
+        this.scroll.on('beforeScrollStart', () => {
+          this.$emit('beforeScroll')
+        })
+      }
     },
     enable () {
       this.scroll && this.scroll.enable()
@@ -68,9 +94,9 @@ export default {
   watch: {
     data () {
       setTimeout(() => {
-        console.log('refresh')
+        // console.log('refresh')
         this.refresh()
-      }, 20)
+      }, this.refreshDelay)
     }
   }
 }
